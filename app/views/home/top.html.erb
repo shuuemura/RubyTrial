@@ -3,9 +3,8 @@
   <%= form_tag({controller: :home, action: :top}, { method: :post}) do %>
     <%= text_field_tag "cards", "S10 H11 D12 C13 H1" %>
     <%= submit_tag "Check" %>
-    <% if params[:cards] %>
-      <%= params[:cards] %>
-    <% end %>
   <% end %>
+  <%= @hand %>
+  <%= @msg %>
 </h2>
 <p>made on Ruby Trial in ~/RubymineProjects/poker</p>
