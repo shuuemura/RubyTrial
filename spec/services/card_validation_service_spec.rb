@@ -1,10 +1,10 @@
 require 'rails_helper'
 describe 'エラー出力' do
   let(:cards){""} #初期値を設定しておき、subjectをエラー分岐前に実行できるようにする
-  subject{CardValidationService.execute(cards)}
-  context 'top画面、および空白Check' do
+  subject{CardValidationService.new.execute(cards)}
+  context '空白Check' do
     let(:cards){blank?}
-    it {is_expected.to eq nil}
+    it {is_expected.to eq "文字を出力してください"}
   end
   context '半角スペースで空けられた塊が4つ以下のとき' do
     let(:cards){"D1 D10 S9 C5"}

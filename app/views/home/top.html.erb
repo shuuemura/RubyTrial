@@ -1,6 +1,6 @@
 <h1>Check Your Poker hand</h1>
 <h2>
-  <%= form_tag({controller: :home, action: :top}, { method: :post}) do %>
+  <%= form_tag({controller: :home, action: :check}, { method: :post}) do %>
     <%= text_field_tag "cards", "S10 H11 D12 C13 H1" %>
     <%= submit_tag "Check" %>
   <% end %>
