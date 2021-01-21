@@ -4,7 +4,7 @@ describe 'エラー出力' do
   subject{CardValidationService.new.execute(cards)}
   context '空白Check' do
     let(:cards){blank?}
-    it {is_expected.to eq "文字を出力してください"}
+    it {is_expected.to eq "文字を入力してください"}
   end
   context '半角スペースで空けられた塊が4つ以下のとき' do
     let(:cards){"D1 D10 S9 C5"}

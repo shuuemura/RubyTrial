@@ -3,7 +3,7 @@ class CardValidationService
   def execute(cards)
 
     if cards.blank?
-      return "文字を出力してください"
+      return "文字を入力してください"
     end
 
     card_list = cards.split(" ")

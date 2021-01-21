@@ -4,26 +4,26 @@ module API
       format :json
 
       params do
-        requires :cards, type: Array, desc: 'Trump Cards.'
+        requires :cards_list, type: Array, desc: 'Trump Cards.'
       end
 
       post '/ver1/cards' do
         result = []
         error = []
         strength = []
-        params[:cards].each do |cards|
+        params[:cards_list].each do |cards|
           card_validation_service = CardValidationService.new.execute(cards)
           hand_judge_service = HandJudgeService.new
           hand_judge_service.execute(cards)
           if card_validation_service.present?
             error_element = {
-              "card": cards,
+              "cards": cards,
               "msg": card_validation_service
             }
             error.push error_element
           else
             result_element = {
-              "card": cards,
+              "cards": cards,
               "hand": hand_judge_service.hand,
               "best": false
             }
