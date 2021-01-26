@@ -4,7 +4,11 @@
     <%= text_field_tag "cards", params[:cards], placeholder: "S10 H11 D12 C13 H1" %>
     <%= submit_tag "Check" %>
   <% end %>
-  <%= @hand %>
-  <%= @msg %>
+  <% if @hand %>
+    <%= @hand %>
+  <% end %>
+  <% if @msg %>
+    <%= @msg %>
+  <% end %>
 </h2>
 <p>made on Ruby Trial in ~/RubymineProjects/poker</p>

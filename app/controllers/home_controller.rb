@@ -4,15 +4,15 @@ class HomeController < ApplicationController
   require './app/services/hand_judge_service'
 
   def check
-    @msg = CardValidationService.new.execute(params[:cards])
+    @msg = CardValidationService.new(params[:cards]).valid?
     if @msg.present?
-      render :'home/top'
+      render :'home/index'
       return
     end
     handJudgeService = HandJudgeService.new
     handJudgeService.execute(params[:cards])
     @hand = handJudgeService.hand
-    render :'home/top'
+    render :'home/index'
   end
 
 end
