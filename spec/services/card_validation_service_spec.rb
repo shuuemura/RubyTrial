@@ -3,7 +3,7 @@ describe 'エラー出力' do
   let(:cards){""} #初期値を設定しておき、subjectをエラー分岐前に実行できるようにする
   subject{CardValidationService.new.execute(cards)}
   context '空白Check' do
-    let(:cards){blank?}
+    let(:cards){""}
     it {is_expected.to eq "文字を入力してください"}
   end
   context '半角スペースで空けられた塊が4つ以下のとき' do

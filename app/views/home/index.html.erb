@@ -1,0 +1,16 @@
+<h1>Check Your Poker hand</h1>
+<h2>
+  <%= form_tag({controller: :home, action: :check}, { method: :post}) do %>
+    <%= text_field_tag "cards_str", params[:cards_str], placeholder: "S10 H11 D12 C13 H1" %>
+    <%= submit_tag "Check" %>
+  <% end %>
+  <% if @errors.present? %>
+    <% @errors.each do |error| %>
+      <%= error %><br>
+    <% end %>
+  <% end %>
+  <% if @hand %>
+    <%= @hand %>
+  <% end %>
+</h2>
+<p>made on Ruby Trial in ~/RubymineProjects/poker</p>
