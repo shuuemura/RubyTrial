@@ -1,18 +1,14 @@
 class HomeController < ApplicationController
-
-  require './app/services/card_validation_service'
-  require './app/services/hand_judge_service'
-
   def check
-    @msg = CardValidationService.new(params[:cards]).valid?
-    if @msg.present?
-      render :'home/index'
+    card_validation_service = CardValidationService.new(params[:cards_str])
+    if card_validation_service.valid?
+      @errors = card_validation_service.errors
+      render :index
       return
     end
-    handJudgeService = HandJudgeService.new
-    handJudgeService.execute(params[:cards])
+    handJudgeService = HandJudgeService.new(params[:cards_str])
+    handJudgeService.judge
     @hand = handJudgeService.hand
-    render :'home/index'
+    render :index
   end
-
 end
